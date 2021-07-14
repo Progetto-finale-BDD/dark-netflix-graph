@@ -1,0 +1,347 @@
+[
+    {
+        "id": 1,
+        "name": "Daniel Kahnwald",
+        "years": [
+            1953
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 2,
+        "name": "Ines Kahnwald",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 3,
+        "name": "Anna Kahnwald",
+        "years": [
+            1986,
+            2019
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 4,
+        "name": "Jonas Kahnwald",
+        "years": [
+            1921,
+            1953,
+            1986,
+            2019,
+            2052,
+            2085
+        ],
+        "alias": [
+            "Stranger",
+            "Adam"
+        ],
+        "sicMundus": true
+    },
+    {
+        "id": 5,
+        "name": "Ulrich Nielsen",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 6,
+        "name": "Katharina Nielsen",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 7,
+        "name": "Mikkel Nielsen",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "alias": [
+            "Michael Kahnwald"
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 8,
+        "name": "Martha Nielsen",
+        "years": [
+            2019,
+            2052
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 9,
+        "name": "Magnus Nielsen",
+        "years": [
+            1921,
+            2019,
+            2052
+        ],
+        "gender": "male",
+        "sicMundus": true
+    },
+    {
+        "id": 10,
+        "name": "Mads Nielsen",
+        "years": [
+            1986
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 11,
+        "name": "Jana Nielsen",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 12,
+        "name": "Tronte Nielsen",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 13,
+        "name": "Agnes Nielsen",
+        "years": [
+            1921,
+            1953
+        ],
+        "gender": "female",
+        "sicMundus": true
+    },
+    {
+        "id": 14,
+        "name": "Charlotte Doppler",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 15,
+        "name": "Peter Doppler",
+        "years": [
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 16,
+        "name": "Elisabeth Doppler",
+        "years": [
+            2019,
+            2052
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 17,
+        "name": "Franziska Doppler",
+        "years": [
+            1921,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": true
+    },
+    {
+        "id": 18,
+        "name": "Helge Doppler",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 19,
+        "name": "Greta Doppler",
+        "years": [
+            1953
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 20,
+        "name": "Bernd Doppler",
+        "years": [
+            1953,
+            1986
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 21,
+        "name": "Yasin Friese",
+        "years": [
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 22,
+        "name": "Aleksander Tiedeman",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "alias": [
+            "Boris Niewald"
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 23,
+        "name": "Regina Tiedeman",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 24,
+        "name": "Bartosz Tiedeman",
+        "years": [
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 25,
+        "name": "Claudia Tiedeman",
+        "years": [
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 26,
+        "name": "Egon Tiedeman",
+        "years": [
+            1986,
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 27,
+        "name": "Doris Tiedeman",
+        "years": [
+            1953
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 28,
+        "name": "Ulla Obendorf",
+        "years": [
+            2019
+        ],
+        "gender": "female",
+        "sicMundus": false
+    },
+    {
+        "id": 29,
+        "name": "Jurgen Obendorf",
+        "years": [
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 30,
+        "name": "Erik Obendorf",
+        "years": [
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": false
+    },
+    {
+        "id": 31,
+        "name": "Noah",
+        "years": [
+            1921,
+            1953,
+            1986,
+            2019
+        ],
+        "gender": "male",
+        "sicMundus": true
+    },
+    {
+        "id": 32,
+        "name": "H.G. Tannhaus",
+        "years": [
+            1953,
+            1986
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 33,
+        "name": "Clausen",
+        "years": [
+            2019
+        ],
+        "sicMundus": false
+    },
+    {
+        "id": 34,
+        "name": "Torben Woller",
+        "years": [
+            2019
+        ],
+        "sicMundus": false
+    }
+]

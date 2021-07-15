@@ -1,6 +1,30 @@
 import json
 
 
+def collect_edges_id():
+    with open("data/graph.json") as json_file:
+        json_object = json.load(json_file)
+        edges = json_object["edges"]
+        id_set = set()
+        for edge in edges:
+            id_set.add(edge["source"])
+            id_set.add(edge["target"])
+
+        print(id_set)
+        json_file.close()
+
+def collect_edges_type():
+    with open("data/graph.json") as json_file:
+        json_object = json.load(json_file)
+        edges = json_object["edges"]
+        type_set = set()
+        for edge in edges:
+            type_set.add(edge["type"])
+
+        print(type_set)
+        json_file.close()
+
+
 class Node:
     def __init__(self, id):
         self.id = id
@@ -32,7 +56,7 @@ for obj in json_object["characters"]:
         name = str(obj["name"])
         node.name = name
         name_to_character[name] = node
-    if "family" in keys:
+    if "lastname" in keys:
         family = obj["lastname"]
         node.family = family
     if "years" in keys:
@@ -69,11 +93,16 @@ for obj in json_object["characters"]:
             edge = Edge(source, target, "parent")
             edges.append(edge)
 
-    if "parentsOf" in keys:
+    if "parentOf" in keys:
         source = name_to_character[obj["name"]].id
-        parents = obj["parentsOf"]
-        for par in parents:
-            target = name_to_character[par].id
+        parents = obj["parentOf"]
+        if type(parents) is list:
+            for par in parents:
+                target = name_to_character[par].id
+                edge = Edge(source, target, "parentOf")
+                edges.append(edge)
+        else:
+            target = name_to_character[parents].id
             edge = Edge(source, target, "parentOf")
             edges.append(edge)
 
@@ -109,7 +138,9 @@ with open("data/edges.json", 'w') as outfile:
     outfile.close()
 
 # with open("data/graph.json","w") as json_file:
-    # json_file.write(json.dumps(graph))
-   # json_file.close()
+# json_file.write(json.dumps(graph))
+# json_file.close()
 
-
+if __name__ == '__main__':
+    collect_edges_id()
+    collect_edges_type()

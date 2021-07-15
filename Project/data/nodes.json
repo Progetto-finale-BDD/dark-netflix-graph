@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "Daniel Kahnwald",
+        "family": "Kahnwald",
         "years": [
             1953
         ],
@@ -10,6 +11,7 @@
     {
         "id": 2,
         "name": "Ines Kahnwald",
+        "family": "Kahnwald",
         "years": [
             1953,
             1986,
@@ -21,6 +23,7 @@
     {
         "id": 3,
         "name": "Anna Kahnwald",
+        "family": "Kahnwald",
         "years": [
             1986,
             2019
@@ -30,6 +33,7 @@
     {
         "id": 4,
         "name": "Jonas Kahnwald",
+        "family": "Kahnwald",
         "years": [
             1921,
             1953,
@@ -47,6 +51,7 @@
     {
         "id": 5,
         "name": "Ulrich Nielsen",
+        "family": "Nielsen",
         "years": [
             1953,
             1986,
@@ -58,6 +63,7 @@
     {
         "id": 6,
         "name": "Katharina Nielsen",
+        "family": "Nielsen",
         "years": [
             1986,
             2019
@@ -68,6 +74,7 @@
     {
         "id": 7,
         "name": "Mikkel Nielsen",
+        "family": "Nielsen",
         "years": [
             1986,
             2019
@@ -81,6 +88,7 @@
     {
         "id": 8,
         "name": "Martha Nielsen",
+        "family": "Nielsen",
         "years": [
             2019,
             2052
@@ -91,6 +99,7 @@
     {
         "id": 9,
         "name": "Magnus Nielsen",
+        "family": "Nielsen",
         "years": [
             1921,
             2019,
@@ -102,6 +111,7 @@
     {
         "id": 10,
         "name": "Mads Nielsen",
+        "family": "Nielsen",
         "years": [
             1986
         ],
@@ -111,6 +121,7 @@
     {
         "id": 11,
         "name": "Jana Nielsen",
+        "family": "Nielsen",
         "years": [
             1953,
             1986,
@@ -122,6 +133,7 @@
     {
         "id": 12,
         "name": "Tronte Nielsen",
+        "family": "Nielsen",
         "years": [
             1953,
             1986,
@@ -133,6 +145,7 @@
     {
         "id": 13,
         "name": "Agnes Nielsen",
+        "family": "Nielsen",
         "years": [
             1921,
             1953
@@ -143,6 +156,7 @@
     {
         "id": 14,
         "name": "Charlotte Doppler",
+        "family": "Doppler",
         "years": [
             1986,
             2019
@@ -153,6 +167,7 @@
     {
         "id": 15,
         "name": "Peter Doppler",
+        "family": "Doppler",
         "years": [
             2019
         ],
@@ -162,6 +177,7 @@
     {
         "id": 16,
         "name": "Elisabeth Doppler",
+        "family": "Doppler",
         "years": [
             2019,
             2052
@@ -172,6 +188,7 @@
     {
         "id": 17,
         "name": "Franziska Doppler",
+        "family": "Doppler",
         "years": [
             1921,
             2019
@@ -182,6 +199,7 @@
     {
         "id": 18,
         "name": "Helge Doppler",
+        "family": "Doppler",
         "years": [
             1953,
             1986,
@@ -193,6 +211,7 @@
     {
         "id": 19,
         "name": "Greta Doppler",
+        "family": "Doppler",
         "years": [
             1953
         ],
@@ -202,6 +221,7 @@
     {
         "id": 20,
         "name": "Bernd Doppler",
+        "family": "Doppler",
         "years": [
             1953,
             1986
@@ -212,6 +232,7 @@
     {
         "id": 21,
         "name": "Yasin Friese",
+        "family": "Friese",
         "years": [
             2019
         ],
@@ -221,6 +242,7 @@
     {
         "id": 22,
         "name": "Aleksander Tiedeman",
+        "family": "Tiedeman",
         "years": [
             1986,
             2019
@@ -234,6 +256,7 @@
     {
         "id": 23,
         "name": "Regina Tiedeman",
+        "family": "Tiedeman",
         "years": [
             1986,
             2019
@@ -244,6 +267,7 @@
     {
         "id": 24,
         "name": "Bartosz Tiedeman",
+        "family": "Tiedeman",
         "years": [
             2019
         ],
@@ -253,6 +277,7 @@
     {
         "id": 25,
         "name": "Claudia Tiedeman",
+        "family": "Tiedeman",
         "years": [
             1953,
             1986,
@@ -264,6 +289,7 @@
     {
         "id": 26,
         "name": "Egon Tiedeman",
+        "family": "Tiedeman",
         "years": [
             1986,
             2019
@@ -274,6 +300,7 @@
     {
         "id": 27,
         "name": "Doris Tiedeman",
+        "family": "Tiedeman",
         "years": [
             1953
         ],
@@ -283,6 +310,7 @@
     {
         "id": 28,
         "name": "Ulla Obendorf",
+        "family": "Obendorf",
         "years": [
             2019
         ],
@@ -292,6 +320,7 @@
     {
         "id": 29,
         "name": "Jurgen Obendorf",
+        "family": "Obendorf",
         "years": [
             2019
         ],
@@ -301,6 +330,7 @@
     {
         "id": 30,
         "name": "Erik Obendorf",
+        "family": "Obendorf",
         "years": [
             2019
         ],
@@ -310,6 +340,7 @@
     {
         "id": 31,
         "name": "Noah",
+        "family": "Nielsen",
         "years": [
             1921,
             1953,
@@ -322,6 +353,7 @@
     {
         "id": 32,
         "name": "H.G. Tannhaus",
+        "family": "Tannhaus",
         "years": [
             1953,
             1986
@@ -331,6 +363,7 @@
     {
         "id": 33,
         "name": "Clausen",
+        "family": "Clausen",
         "years": [
             2019
         ],
@@ -339,6 +372,7 @@
     {
         "id": 34,
         "name": "Torben Woller",
+        "family": "Woller",
         "years": [
             2019
         ],

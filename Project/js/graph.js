@@ -1,21 +1,31 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
 
 
-var height = 1200
-var width = 1800
-
+var height = 1200;
+var width = 1800;
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
-
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)     
     .attr("height", height);
 
+// Draw legend
+var colors = ["blue","green","red","pink","yellow","black","orange","purple"];
+// create a list of keys
+var edgeTypes = ["parent", "parentOf", "killedBy", "marriedTo", "isSibling","samePersonOf","affair","collegueOf"];
+
+
+// Usually you have a color scale in your chart already
+var colorScale = d3.scaleOrdinal()
+  .domain(edgeTypes)
+  .range(colors);
+
+// Add one dot in the legend for each name.
+var size = 40;
+
+
 //Create marker arrows
-
-const edgeTypes = ["parent", "parentOf", "marriedTo", "collegueOf", "affair", "isSibling", "killedBy", "samePersonOf"]
-
 
 for (const elem of edgeTypes){
 	var marker = svg
@@ -26,8 +36,8 @@ for (const elem of edgeTypes){
           .append("svg:marker")
           .attr("id", elem)
           .attr("viewBox", "0 -5 10 10")
-          .attr("refX", 19)
-          .attr("refY", -1.55)
+          .attr("refX", 33)
+          .attr("refY", -3)
           .attr("markerWidth", 4)
           .attr("markerHeight", 4)
           .attr("orient", "auto")
@@ -37,9 +47,53 @@ for (const elem of edgeTypes){
 }
 
 
+for (i=1; i<=36; i++){
+	var defs = svg.append("defs");
+
+	defs.append('pattern')
+		.attr("id", i)
+		.attr("width", 1)
+		.attr("height", 1)
+		.append("svg:image")
+		.attr("xlink:href", "image_resized/" + i + ".jpg")
+		.attr("width", 100)
+		.attr("height", 100)
+		.attr("y", 0)
+		.attr("x", 0);
+
+}
+
+
+
+svg.selectAll("mydots")
+  .data(edgeTypes)
+  .enter()
+  .append("line")
+  .attr("x1", 50)
+  .attr("x2", 110)
+  .attr("y1", function(d,i){ return 100 + i*(size+5);}) // 100 is where the first dot appears. 25 is the distance between dots
+  .attr("y2", function(d,i){ return 100 + i*(size+5);}) // 100 is where the first dot appears. 25 is the distance between dots
+  .style("stroke", function(d){ return colorScale(d);})
+  .attr("stroke-width", 5)
+  .attr('marker-end', "url(#Mark)");
+
+
+// Add one dot in the legend for each name.
+svg.selectAll("mylabels")
+  .data(edgeTypes)
+  .enter()
+  .append("text")
+  .attr("x", 100 + size*1.2)
+  .attr("y", function(d,i){ return 100 + i*(size+5);}) // 100 is where the first dot appears. 25 is the distance between dots
+  .style("fill", "black")
+  .text(function(d){ return d})
+  .attr("text-anchor", "left")
+  .style("alignment-baseline", "middle")
+  .attr("font-size", 20);
+
 var simulation = d3.forceSimulation()
-    .force("link", d3.forceLink().id(function(d) { return d.id;}).distance(120).strength(2))
-    .force("charge", d3.forceManyBody().strength(-150))
+    .force("link", d3.forceLink().id(function(d) { return d.id;}).distance(200).strength(2))
+    .force("charge", d3.forceManyBody().strength(-180))
     .force("center", d3.forceCenter(width / 2, height / 2))
     .force("collision", d3.forceCollide().radius(80));
 
@@ -54,7 +108,7 @@ d3.json("data/graph.json", function(error, graph) {
       .attr("fill", "transparent")
       .attr("stroke", function(d) { return getEdgeColor(d);})
       .attr("stroke-width", 5)
-      .attr('marker-end',function(d) { return "url(#" + d.type + ")	"});
+      .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
 
 
   var node = svg.append("g")
@@ -62,8 +116,10 @@ d3.json("data/graph.json", function(error, graph) {
       .selectAll("circle")
       .data(graph.nodes)
       .enter().append("circle")
-      .attr("r", 20)
-      .attr("fill", function(d) { return color(d.family); })
+      .attr("r", 50)
+      .attr("fill", function(d) { return "url(#" + d.id + ")" })
+      .attr("stroke", "black")
+      .attr("stroke-width", "2px")
       .call(d3.drag()
       .on("start", dragstarted)
       .on("drag", dragged)

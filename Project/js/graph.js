@@ -135,7 +135,7 @@ d3.json("data/graph.json", function(error, graph) {
   simulation.force("link")
       .links(graph.edges);
 
-  
+  var radius = 50; 
   
   function ticked() {
     link
@@ -151,8 +151,8 @@ d3.json("data/graph.json", function(error, graph) {
             d.target.y;
     });
     node
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+        .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+        .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
   }
 
 

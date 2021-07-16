@@ -1,8 +1,8 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 40}; // to memorize the margins
 
 
-var height = 1000
-var width = 1600
+var height = 1200
+var width = 1800
 
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
@@ -26,9 +26,9 @@ for (const elem of edgeTypes){
           .append("svg:marker")
           .attr("id", elem)
           .attr("viewBox", "0 -5 10 10")
-          .attr("refX", 22)
-          .attr("refY", 0)
-          .attr("markerWidth", 3)
+          .attr("refX", 19)
+          .attr("refY", -1.55)
+          .attr("markerWidth", 4)
           .attr("markerHeight", 4)
           .attr("orient", "auto")
           .attr("fill", getEdgeColorFromType(elem))
@@ -83,10 +83,17 @@ d3.json("data/graph.json", function(error, graph) {
   
   function ticked() {
     link
-        .attr("d", function(d) { return "M"+d.source.x+","+d.source.y+" S"
-        	+ d.source.x+ "," + d.target.y
-        	+", "+d.target.x+" "+d.target.y;});
-
+        .attr("d", function(d) {
+        var dx = d.target.x - d.source.x,
+            dy = d.target.y - d.source.y,
+            dr = Math.sqrt(dx * dx + dy * dy);
+        return "M" + 
+            d.source.x + "," + 
+            d.source.y + "A" + 
+            dr + "," + dr + " 0 0,1 " + 
+            d.target.x + "," + 
+            d.target.y;
+    });
     node
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });

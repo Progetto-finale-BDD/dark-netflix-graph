@@ -195,32 +195,34 @@ function filterEdges(newNodes){
 
 
 function redraw(year){
+
 	var newNodes = filterNodes(year); 
+
+	console.log(newNodes); 
+
 	var newEdges = filterEdges(newNodes); 
+
 	console.log(newEdges); 
 
-	var links = linkGroup.selectAll("path").data(newEdges); 
+
+	var links = linkGroup.selectAll("path").data(newEdges, function(e){return e.id;}); 
 
 	links.exit().remove(); 
 
-	link = links.enter().append("path")
+	var newLink = links.enter().append("path")
 				  .attr("fill", "transparent")
 				  .attr("stroke", function(d) { return getEdgeColor(d);})
 				  .attr("stroke-width", 5)
 				  .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
 
-    links.transition().duration(100)
-                  .attr("fill", "transparent")
-				  .attr("stroke", function(d) { return getEdgeColor(d);})
-				  .attr("stroke-width", 5)
-				  .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
+    
 
 
-	var nodes = nodeGroup.selectAll("circle").data(newNodes, function(n){return n.id;}) 
+	var nodes = nodeGroup.selectAll("circle").data(newNodes, function(n){return n.id;}) ;
 
     nodes.exit().remove(); 
 
-	node = nodes.enter().append("circle")
+	var newNode = nodes.enter().append("circle")
       .attr("r", 50)
       .attr("fill", function(d) { return "url(#" + d.id + ")" })
       .attr("stroke", "black")
@@ -230,21 +232,20 @@ function redraw(year){
       .on("drag", dragged)
       .on("end", dragended));
 
-    nodes.transition().duration(100)
-                       .attr("r", 50)
-						.attr("fill", function(d) { return "url(#" + d.id + ")" })
-						.attr("stroke", "black")
-						.attr("stroke-width", "2px");
+    
 
-
-	node.append("title")
+	newNode.append("title")
 	   .text(function(d) { return d.name;});
+
+	//node.merge(newNode); 
 
 	simulation.nodes(newNodes)
 	   .on("tick", ticked);
 
 	simulation.force("link")
 	    .links(newEdges);
+
+	simulation.alpha(1).restart(); 
 }
 
 

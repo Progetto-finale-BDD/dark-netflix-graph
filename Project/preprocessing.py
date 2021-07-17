@@ -141,6 +141,23 @@ with open("data/edges.json", 'w') as outfile:
 # json_file.write(json.dumps(graph))
 # json_file.close()
 
+
+def add_ids_to_edges():
+    with open("data/graph.json") as json_file:
+        json_object = json.load(json_file)
+        edges = json_object["edges"]
+        count = 0
+        new_string = ""
+        for edge in edges:
+            edge = str(edge)
+            count += 1
+            id = "{ \'id\'" + ": " +  str(count) + ", "
+            new_string = new_string + id + edge[1:] + ",\n"
+
+        print(new_string)
+
+        json_file.close()
+
+
 if __name__ == '__main__':
-    collect_edges_id()
-    collect_edges_type()
+    add_ids_to_edges()

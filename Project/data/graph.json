@@ -422,6 +422,11 @@
     },
     {
         "source": 3,
+        "target": 35,
+        "type": "parentOf"
+    },
+    {
+        "source": 3,
         "target": 7,
         "type": "marriedTo"
     },
@@ -431,7 +436,17 @@
         "type": "parent"
     },
     {
+        "source": 35,
+        "target": 3,
+        "type": "parent"
+    },
+    {
         "source": 4,
+        "target": 7,
+        "type": "parent"
+    },
+    {
+        "source": 35,
         "target": 7,
         "type": "parent"
     },
@@ -517,11 +532,26 @@
     },
     {
         "source": 7,
+        "target": 35,
+        "type": "parentOf"
+    },
+    {
+        "source": 7,
         "target": 7,
         "type": "killedBy"
     },
     {
+        "source": 36,
+        "target": 36,
+        "type": "killedBy"
+    },
+    {
         "source": 7,
+        "target": 3,
+        "type": "marriedTo"
+    },
+    {
+        "source": 36,
         "target": 3,
         "type": "marriedTo"
     },
@@ -533,6 +563,11 @@
     {
         "source": 8,
         "target": 7,
+        "type": "isSibling"
+    },
+    {
+        "source": 8,
+        "target": 36,
         "type": "isSibling"
     },
     {
@@ -553,6 +588,11 @@
     {
         "source": 9,
         "target": 7,
+        "type": "isSibling"
+    },
+    {
+        "source": 9,
+        "target": 36,
         "type": "isSibling"
     },
     {
@@ -879,8 +919,20 @@
         "year": 2019
     },
     {
+        "source": 35,
+        "target": 8,
+        "type": "affair",
+        "year": 2019
+    },
+    {
         "source": 8,
         "target": 4,
+        "type": "affair",
+        "year": 2019
+    },
+    {
+        "source": 8,
+        "target": 35,
         "type": "affair",
         "year": 2019
     },
@@ -1031,6 +1083,46 @@
         "source": 29,
         "target": 30,
         "type": "parentOf"
+    },
+    {
+        "source": 34,
+        "target": 30,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 5,
+        "target": 30,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 33,
+        "target": 30,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 14,
+        "target": 30,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 34,
+        "target": 7,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 5,
+        "target": 7,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 33,
+        "target": 7,
+        "type": "isLookingFor"
+    },
+    {
+        "source": 14,
+        "target": 7,
+        "type": "isLookingFor"
     }
     ]
 }

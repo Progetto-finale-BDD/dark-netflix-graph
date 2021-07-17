@@ -11,9 +11,9 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 // Draw legend
-var colors = ["blue","green","red","pink","yellow","black","orange","purple"];
+var colors = ["blue","green","red","pink","yellow","black","orange","purple","grey"];
 // create a list of keys
-var edgeTypes = ["parent", "parentOf", "killedBy", "marriedTo", "isSibling","samePersonOf","affair","collegueOf"];
+var edgeTypes = ["parent", "parentOf", "killedBy", "marriedTo", "isSibling","samePersonOf","affair","collegueOf","isLookingFor"];
 
 
 // Usually you have a color scale in your chart already
@@ -48,6 +48,9 @@ for (const elem of edgeTypes){
 
 
 for (i=1; i<=36; i++){
+	if(i == 21){
+		continue; 
+	}
 	var defs = svg.append("defs");
 
 	defs.append('pattern')
@@ -60,7 +63,6 @@ for (i=1; i<=36; i++){
 		.attr("height", 100)
 		.attr("y", 0)
 		.attr("x", 0);
-
 }
 
 
@@ -97,25 +99,41 @@ var simulation = d3.forceSimulation()
     .force("center", d3.forceCenter(width / 2, height / 2))
     .force("collision", d3.forceCollide().radius(80));
 
-d3.json("data/graph.json", function(error, graph) {
+
+var graph, node, link; 
+
+d3.json("data/graph.json", function(error, g) {
   if (error) throw error;
-
-  var link = svg.append("g")
-      .attr("class", "links")
-      .selectAll("path")
-      .data(graph.edges)
-      .enter().append("path")
-      .attr("fill", "transparent")
-      .attr("stroke", function(d) { return getEdgeColor(d);})
-      .attr("stroke-width", 5)
-      .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
+  graph = g; 
+  intializeGraph();    
+  addEventListenerOnButtons(); 
+});
 
 
-  var node = svg.append("g")
-      .attr("class", "nodes")
-      .selectAll("circle")
-      .data(graph.nodes)
-      .enter().append("circle")
+var linkGroup, nodeGroup; 
+
+function intializeGraph(){
+
+	linkGroup = svg.append("g").attr("class", "links"); 
+
+	var links = linkGroup.selectAll("path").data(graph.edges); 
+
+	links.exit().remove(); 
+
+	link = links.enter().append("path")
+				  .attr("fill", "transparent")
+				  .attr("stroke", function(d) { return getEdgeColor(d);})
+				  .attr("stroke-width", 5)
+				  .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
+
+
+
+    nodeGroup = svg.append("g").attr("class", "nodes"); 
+	var nodes = nodeGroup.selectAll("circle").data(graph.nodes); 
+
+    nodes.exit().remove(); 
+
+	node = nodes.enter().append("circle")
       .attr("r", 50)
       .attr("fill", function(d) { return "url(#" + d.id + ")" })
       .attr("stroke", "black")
@@ -125,49 +143,130 @@ d3.json("data/graph.json", function(error, graph) {
       .on("drag", dragged)
       .on("end", dragended));
 
-  node.append("title")
-      .text(function(d) { return d.name;});
+	node.append("title")
+	   .text(function(d) { return d.name;});
 
+	simulation.nodes(graph.nodes)
+	   .on("tick", ticked);
 
-  simulation.nodes(graph.nodes)
-      .on("tick", ticked);
+	simulation.force("link")
+	    .links(graph.edges);
+}
 
-  simulation.force("link")
-      .links(graph.edges);
-
-  var radius = 50; 
+var radius = 50; 
   
-  function ticked() {
+function ticked() {
     link
         .attr("d", function(d) {
-        var dx = d.target.x - d.source.x,
+            var dx = d.target.x - d.source.x,
             dy = d.target.y - d.source.y,
             dr = Math.sqrt(dx * dx + dy * dy);
-        return "M" + 
+            return "M" + 
             d.source.x + "," + 
             d.source.y + "A" + 
             dr + "," + dr + " 0 0,1 " + 
             d.target.x + "," + 
             d.target.y;
-    });
+         });
     node
         .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
         .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
-  }
-
-
-});
-
-
-/*
-function bezierPoint(source, target) {
-  diff = Math.abs(target - source); 
-  diff = diff / 2; 
-  return diff; 
 }
-*/
 
 
+
+function filterNodes(year){
+   var newNodes = graph.nodes.filter( function(n) { 
+		return n["years"].includes(year); 
+   }); 
+   return newNodes; 
+}
+
+function filterEdges(newNodes){
+	var nodeIds = newNodes.map(function(n) {
+		return n.id; 
+	});
+
+	var newEdges = graph.edges.filter( function(e) {
+		return (nodeIds.includes(e.source.id) && nodeIds.includes(e.target.id)); 
+    }); 
+	return newEdges; 
+}
+
+
+function redraw(year){
+	var newNodes = filterNodes(year); 
+	var newEdges = filterEdges(newNodes); 
+	console.log(newEdges); 
+
+	var links = linkGroup.selectAll("path").data(newEdges); 
+
+	links.exit().remove(); 
+
+	link = links.enter().append("path")
+				  .attr("fill", "transparent")
+				  .attr("stroke", function(d) { return getEdgeColor(d);})
+				  .attr("stroke-width", 5)
+				  .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
+
+    links.transition().duration(100)
+                  .attr("fill", "transparent")
+				  .attr("stroke", function(d) { return getEdgeColor(d);})
+				  .attr("stroke-width", 5)
+				  .attr('marker-end',function(d) { return "url(#" + d.type + ")"});
+
+
+	var nodes = nodeGroup.selectAll("circle").data(newNodes, function(n){return n.id;}) 
+
+    nodes.exit().remove(); 
+
+	node = nodes.enter().append("circle")
+      .attr("r", 50)
+      .attr("fill", function(d) { return "url(#" + d.id + ")" })
+      .attr("stroke", "black")
+      .attr("stroke-width", "2px")
+      .call(d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));
+
+    nodes.transition().duration(100)
+                       .attr("r", 50)
+						.attr("fill", function(d) { return "url(#" + d.id + ")" })
+						.attr("stroke", "black")
+						.attr("stroke-width", "2px");
+
+
+	node.append("title")
+	   .text(function(d) { return d.name;});
+
+	simulation.nodes(newNodes)
+	   .on("tick", ticked);
+
+	simulation.force("link")
+	    .links(newEdges);
+}
+
+
+
+function addEventListenerOnButtons(){
+	var button = d3.select(".filter-btn-1953");
+	button.on("click", function(d){
+		redraw(1953); 
+    });
+    button = d3.select(".filter-btn-1986");
+	button.on("click", function(d){
+		redraw(1986); 
+    });
+    button = d3.select(".filter-btn-2019");
+	button.on("click", function(d){
+		redraw(2019); 
+    });
+    button = d3.select(".filter-btn-2052");
+	button.on("click", function(d){
+		redraw(2052); 
+    });
+}
 
 
 function dragstarted(d) {
@@ -213,6 +312,9 @@ function getEdgeColor(d){
 	if(d.type == "collegueOf"){
 		return "purple"; 
 	}
+	if(d.type == "isLookingFor"){
+		return "grey"; 
+	}
 }
 
 
@@ -240,6 +342,9 @@ function getEdgeColorFromType(type){
 	}
 	if(type == "collegueOf"){
 		return "purple"; 
+	}
+	if(type == "isLookingFor"){
+		return "grey"; 
 	}
 }
 
